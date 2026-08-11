@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solgläntans Bed & Breakfast</title>
+    <meta name="description" content="Välkommen till Solgläntans Bed & Breakfast – ett personligt och trivsamt boende med närhet till natur och sevärdheter.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #496b52;
+            --primary-dark: #35513c;
+            --secondary: #d8b98a;
+            --light-bg: #f7f5ef;
+            --dark: #26342a;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.97);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+            letter-spacing: .5px;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .hero {
+            min-height: 680px;
+            background:
+                linear-gradient(rgba(20, 35, 25, .48), rgba(20, 35, 25, .48)),
+                url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.7rem, 6vw, 5rem);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 650px;
+        }
+
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #68736a;
+        }
+
+        .room-card {
+            border: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,.08);
+            height: 100%;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0,0,0,.12);
+        }
+
+        .room-card img {
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .room-price {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .amenities-section {
+            background-color: var(--light-bg);
+        }
+
+        .amenity {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .amenity-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,.06);
+        }
+
+        .booking-box {
+            background-color: white;
+            border-radius: 18px;
+            padding: 45px;
+            box-shadow: 0 10px 40px rgba(0,0,0,.08);
+        }
+
+        .booking-section {
+            background-color: var(--light-bg);
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .contact-card {
+            background-color: var(--light-bg);
+            border-radius: 18px;
+            padding: 35px;
+            height: 100%;
+        }
+
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-right: 12px;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: #dce5de;
+        }
+
+        footer a {
+            color: #dce5de;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-brand {
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 600px;
+            }
+
+            .booking-box {
+                padding: 25px;
+            }
+
+            .section-padding {
+                padding: 65px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand" href="#hem">
+            <i class="bi bi-house-heart me-2"></i>
+            Solgläntans B&B
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Öppna meny">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#hem">Hem</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#bokning">Bokning</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#rum">Rum</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#bekvamligheter">
+                        Bekvämligheter
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#kontakt">Kontakt</a>
+                </li>
+
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <a class="btn btn-primary px-4" href="#bokning">
+                        Boka nu
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header id="hem" class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <p class="text-uppercase fw-bold mb-3">
+                Välkommen till Solgläntan
+            </p>
+
+            <h1>
+                En plats att koppla av och känna sig hemma
+            </h1>
+
+            <p class="mt-4">
+                Bo bekvämt i en lugn och naturskön miljö.
+                Njut av sköna rum, personlig service och en härlig
+                frukost varje morgon.
+            </p>
+
+            <div class="mt-4">
+
+                <a href="#bokning" class="btn btn-primary btn-lg me-2">
+                    Boka din vistelse
+                </a>
+
+                <a href="#rum" class="btn btn-outline-light btn-lg">
+                    Se våra rum
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="section-padding">
+
+    <div class="container text-center">
+
+        <h2 class="section-title">
+            Välkommen till Solgläntans B&B
+        </h2>
+
+        <p class="section-subtitle mt-3">
+
+            Ett personligt och charmigt boende för dig som söker
+            lugn, komfort och närhet till naturen. Oavsett om du
+            stannar en natt eller en hel vecka vill vi att du ska
+            känna dig som hemma.
+
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <i class="bi bi-tree fs-1 text-success"></i>
+
+                <h4 class="mt-3">
+                    Nära naturen
+                </h4>
+
+                <p class="text-muted">
+                    Promenader, cykelleder och vackra omgivningar
+                    finns alldeles runt hörnet.
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <i class="bi bi-cup-hot fs-1 text-success"></i>
+
+                <h4 class="mt-3">
+                    Härlig frukost
+                </h4>
+
+                <p class="text-muted">
+                    Börja dagen med en färsk och varierad frukost
+                    med lokala råvaror.
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <i class="bi bi-heart fs-1 text-success"></i>
+
+                <h4 class="mt-3">
+                    Personlig service
+                </h4>
+
+                <p class="text-muted">
+                    Vi finns här för att göra din vistelse
+                    så trivsam som möjligt.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ROOMS
+========================= -->
+
+<section id="rum" class="section-padding bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Våra rum
+            </h2>
+
+            <p class="section-subtitle mt-3 mb-0">
+                Alla våra rum är omsorgsfullt inredda med fokus
+                på komfort, lugn och en personlig känsla.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Room 1 -->
+
+            <div class="col-lg-4">
+
+                <div class="card room-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=80"
+                        class="card-img-top"
+                        alt="Trivsamt dubbelrum">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="h4">
+                            Trädgårdsrummet
+                        </h3>
+
+                        <p class="text-muted">
+                            Ett ljust och rofyllt dubbelrum med
+                            utsikt över vår vackra trädgård.
+                        </p>
+
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Dubbelsäng
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Eget badrum
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Gratis Wi-Fi
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Frukost ingår
+                            </li>
+
+                        </ul>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+
+                            <span class="room-price">
+                                1 295 kr/natt
+                            </span>
+
+                            <a href="#bokning" class="btn btn-outline-success">
+                                Boka
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Room 2 -->
+
+            <div class="col-lg-4">
+
+                <div class="card room-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=80"
+                        class="card-img-top"
+                        alt="Elegant sovrum">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="h4">
+                            Äppelrummet
+                        </h3>
+
+                        <p class="text-muted">
+                            Ett charmigt rum med romantisk atmosfär
+                            och utsikt mot äppelträdgården.
+                        </p>
+
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Dubbelsäng
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Eget badrum
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Gratis Wi-Fi
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Frukost ingår
+                            </li>
+
+                        </ul>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+
+                            <span class="room-price">
+                                1 395 kr/natt
+                            </span>
+
+                            <a href="#bokning" class="btn btn-outline-success">
+                                Boka
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Room 3 -->
+
+            <div class="col-lg-4">
+
+                <div class="card room-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80"
+                        class="card-img-top"
+                        alt="Rymligt hotellrum">
+
+                    <div class="card-body p-4">
+
+                        <h3 class="h4">
+                            Utsiktsrummet
+                        </h3>
+
+                        <p class="text-muted">
+                            Vårt rymligaste rum med stora fönster
+                            och vacker utsikt över landskapet.
+                        </p>
+
+                        <ul class="list-unstyled">
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                King size-säng
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Eget badrum
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Sittgrupp
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check2 text-success me-2"></i>
+                                Frukost ingår
+                            </li>
+
+                        </ul>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+
+                            <span class="room-price">
+                                1 595 kr/natt
+                            </span>
+
+                            <a href="#bokning" class="btn btn-outline-success">
+                                Boka
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BOOKING
+========================= -->
+
+<section id="bokning" class="section-padding booking-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Boka din vistelse
+            </h2>
+
+            <p class="section-subtitle mt-3 mb-0">
+                Skicka en bokningsförfrågan så återkommer vi
+                med en personlig bekräftelse.
+            </p>
+
+        </div>
+
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10">
+
+                <div class="booking-box">
+
+                    <form action="#" method="post">
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+
+                                <label for="arrival" class="form-label">
+                                    Ankomstdatum
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control form-control-lg"
+                                    id="arrival"
+                                    name="arrival"
+                                    required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label for="departure" class="form-label">
+                                    Avresedatum
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control form-control-lg"
+                                    id="departure"
+                                    name="departure"
+                                    required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label for="guests" class="form-label">
+                                    Antal gäster
+                                </label>
+
+                                <select
+                                    class="form-select form-select-lg"
+                                    id="guests"
+                                    name="guests"
+                                    required>
+
+                                    <option value="">
+                                        Välj antal
+                                    </option>
+
+                                    <option>1 gäst</option>
+                                    <option>2 gäster</option>
+                                    <option>3 gäster</option>
+                                    <option>4 gäster</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label for="room" class="form-label">
+                                    Önskat rum
+                                </label>
+
+                                <select
+                                    class="form-select form-select-lg"
+                                    id="room"
+                                    name="room"
+                                    required>
+
+                                    <option value="">
+                                        Välj rum
+                                    </option>
+
+                                    <option>
+                                        Trädgårdsrummet
+                                    </option>
+
+                                    <option>
+                                        Äppelrummet
+                                    </option>
+
+                                    <option>
+                                        Utsiktsrummet
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label for="name" class="form-label">
+                                    Namn
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Ditt namn"
+                                    required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label for="email" class="form-label">
+                                    E-post
+                                </label>
+
+                                <input
+                                    type="email"
+                                    class="form-control form-control-lg"
+                                    id="email"
+                                    name="email"
+                                    placeholder="din@email.se"
+                                    required>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <label for="message" class="form-label">
+                                    Meddelande
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="message"
+                                    name="message"
+                                    rows="4"
+                                    placeholder="Har du några önskemål eller frågor?"></textarea>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <div class="form-check">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="privacy"
+                                        required>
+
+                                    <label
+                                        class="form-check-label"
+                                        for="privacy">
+
+                                        Jag godkänner att mina uppgifter
+                                        behandlas för att hantera min
+                                        bokningsförfrågan.
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-12 text-center">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary btn-lg px-5">
+
+                                    Skicka bokningsförfrågan
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     AMENITIES
+========================= -->
+
+<section id="bekvamligheter" class="section-padding amenities-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Bekvämligheter
+            </h2>
+
+            <p class="section-subtitle mt-3 mb-0">
+                Vi vill att du ska känna dig hemma – fast med
+                lite extra guldkant.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-cup-hot"></i>
+                    </div>
+
+                    <h4>
+                        Frukost
+                    </h4>
+
+                    <p class="text-muted">
+                        Färsk och varierad frukost varje morgon.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-wifi"></i>
+                    </div>
+
+                    <h4>
+                        Gratis Wi-Fi
+                    </h4>
+
+                    <p class="text-muted">
+                        Trådlöst internet i hela huset.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-car-front"></i>
+                    </div>
+
+                    <h4>
+                        Parkering
+                    </h4>
+
+                    <p class="text-muted">
+                        Gratis parkering direkt vid boendet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-tree"></i>
+                    </div>
+
+                    <h4>
+                        Trädgård
+                    </h4>
+
+                    <p class="text-muted">
+                        Koppla av i vår lugna och gröna trädgård.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-bicycle"></i>
+                    </div>
+
+                    <h4>
+                        Cykelförvaring
+                    </h4>
+
+                    <p class="text-muted">
+                        Säker förvaring för dina cyklar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-heart"></i>
+                    </div>
+
+                    <h4>
+                        Personlig service
+                    </h4>
+
+                    <p class="text-muted">
+                        Vi hjälper gärna till under din vistelse.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+
+                    <h4>
+                        Läsplats
+                    </h4>
+
+                    <p class="text-muted">
+                        Lugna platser för en stunds avkoppling.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="amenity">
+
+                    <div class="amenity-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+
+                    <h4>
+                        Bra läge
+                    </h4>
+
+                    <p class="text-muted">
+                        Nära natur, sevärdheter och centrum.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="kontakt" class="section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Kontakta oss
+            </h2>
+
+            <p class="section-subtitle mt-3 mb-0">
+                Har du frågor om våra rum eller din kommande vistelse?
+                Hör gärna av dig.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <div class="contact-card">
+
+                    <h3 class="h4 mb-4">
+                        Solgläntans Bed & Breakfast
+                    </h3>
+
+
+                    <p>
+                        <i class="bi bi-geo-alt contact-icon"></i>
+                        Ängsvägen 12<br>
+                        <span class="ms-4">
+                            123 45 Solbyn
+                        </span>
+                    </p>
+
+
+                    <p>
+                        <i class="bi bi-telephone contact-icon"></i>
+                        <a href="tel:+46701234567">
+                            070-123 45 67
+                        </a>
+                    </p>
+
+
+                    <p>
+                        <i class="bi bi-envelope contact-icon"></i>
+                        <a href="mailto:info@solglantan.se">
+                            info@solglantan.se
+                        </a>
+                    </p>
+
+
+                    <hr class="my-4">
+
+
+                    <h4 class="h6">
+                        Öppettider
+                    </h4>
+
+                    <p class="mb-1">
+                        Måndag–fredag: 08:00–20:00
+                    </p>
+
+                    <p>
+                        Lördag–söndag: 09:00–18:00
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7">
+
+                <div class="contact-card">
+
+                    <h3 class="h4 mb-4">
+                        Skicka ett meddelande
+                    </h3>
+
+                    <form action="#" method="post">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <label for="contactName" class="form-label">
+                                    Namn
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="contactName"
+                                    name="name"
+                                    required>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label for="contactEmail" class="form-label">
+                                    E-post
+                                </label>
+
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="contactEmail"
+                                    name="email"
+                                    required>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <label for="contactMessage" class="form-label">
+                                    Meddelande
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="contactMessage"
+                                    name="message"
+                                    rows="6"
+                                    required></textarea>
+
+                            </div>
+
+
+                            <div class="col-12">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary">
+
+                                    Skicka meddelande
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="pt-5 pb-4">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <div class="footer-brand mb-3">
+                    <i class="bi bi-house-heart me-2"></i>
+                    Solgläntans Bed & Breakfast
+                </div>
+
+                <p>
+                    En personlig plats för vila, goda upplevelser
+                    och härliga dagar.
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <h5 class="text-white">
+                    Snabblänkar
+                </h5>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+                        <a href="#hem">Hem</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#bokning">Bokning</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#rum">Rum</a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#bekvamligheter">
+                            Bekvämligheter
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#kontakt">Kontakt</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-6 col-lg-4">
+
+                <h5 class="text-white">
+                    Följ oss
+                </h5>
+
+                <p>
+                    Följ Solgläntans B&B på sociala medier.
+                </p>
+
+                <a href="#" class="fs-4 me-3">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#" class="fs-4 me-3">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr class="my-4">
+
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+
+                <small>
+                    © 2026 Solgläntans Bed & Breakfast.
+                    Alla rättigheter förbehållna.
+                </small>
+
+            </div>
+
+
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+
+                <a href="#" class="me-3">
+                    Integritetspolicy
+                </a>
+
+                <a href="#">
+                    Cookies
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
